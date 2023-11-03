@@ -56,6 +56,5 @@ function nabeatsu($i)
         ?>
     </section>
 </body>
-ƒ
 
 </html>
