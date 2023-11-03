@@ -49,7 +49,7 @@ function calc($yen, $product)
         }
     }
 
-    if ($yen < １０００) {
+    if ($yen < 1000) {
         echo "{$yen}円玉で購入した場合、\n";
     } else {
         echo "{$yen}円札で購入した場合、\n";
