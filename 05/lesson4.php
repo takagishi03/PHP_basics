@@ -78,7 +78,7 @@ function calc($yen, $product)
         <?php
         calc($yen, $product);
         echo "<br>";
-        calc(100, 50);
+        calc(999, 50);
         // echo "<br>";
         // calc(10, 150);
         // echo "<br>";
