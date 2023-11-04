@@ -1,4 +1,7 @@
 <?php
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 // デバック練習
 // 氏名入力時に入力内容が表示されるようにプログラムを完成させてください。
@@ -24,7 +27,7 @@ class SelfIntroduction
         string $lastName,
         string $firstName,
         int $age,
-        string $hobby,
+        string $hobby
     ) {
         $this->lastName     = $lastName;
         $this->firstName    = $firstName;
@@ -34,7 +37,7 @@ class SelfIntroduction
 
     public function getFullName()
     {
-        return $this->lastName.$this->firstName;
+        return $this->lastName . $this->firstName;
     }
 
     public function getAge()
@@ -48,41 +51,49 @@ class SelfIntroduction
     }
 }
 
-if (! empty($_POST)) {
+if (!empty($_POST)) {
     $lastName         = $_POST['last_name'];
     $firstName        = $_POST['first_name'];
     $age              = $_POST['age'];
     $hobby            = $_POST['hobby'];
+
+    $selfIntroduction = new SelfIntroduction($lastName, $firstName, $age, $hobby);
+
     if ($selfIntroduction) {
-        echo '私の名前は'.$selfIntroduction->getFullName().'年齢は'.$selfIntroduction->getAge().'です。';
+        echo '私の名前は' . $selfIntroduction->getFullName() . '年齢は' . $selfIntroduction->getAge() . 'です。';
         echo '<br>';
-        echo '趣味は'. $selfIntroduction->getHobby().'です。';
+        echo '趣味は' . $selfIntroduction->getHobby() . 'です。';
+    } else {
+        echo '自己紹介情報はありません。';
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="utf-8">
-<title>デバック練習</title>
+    <meta charset="utf-8">
+    <title>デバック練習</title>
 </head>
+
 <body>
     <section>
-    <form action='./lesson2.php' method="post">
-        <label>姓</label>
-        <input type="text" name="last_name"/>
-        <label>名</label>
-        <input type="text" name="first_name" />
-        <label>趣味</label>
-        <input type="text" name="hobby" />
-        <select name="age">
-            <?php foreach ($createAgeGroup() as $age) :?>
-                <option value="<?php echo $age ?>" ><?php echo $age ?> </option>
-            <?php endforeach; ?>
-        </select>
-        <input type="submit" value="送信する"/>
-    </form>
+        <form action='./lesson2.php' method="post">
+            <label>姓</label>
+            <input type="text" name="last_name" />
+            <label>名</label>
+            <input type="text" name="first_name" />
+            <label>趣味</label>
+            <input type="text" name="hobby" />
+            <select name="age">
+                <?php foreach ($createAgeGroup() as $age) : ?>
+                    <option value="<?php echo $age ?>"><?php echo $age ?> </option>
+                <?php endforeach; ?>
+            </select>
+            <input type="submit" value="送信する" />
+        </form>
     </section>
 </body>
-</html>
 
+</html>
